@@ -1,0 +1,3 @@
+RETROARCH_APPLE_DEPS = $(inherited:default=/usr/local/share/retroarch-apple-deps)
+
+#include "sdl/sdl.xcconfig"
