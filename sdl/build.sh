@@ -9,7 +9,7 @@ function install() {
 }
 
 echo Configuring for macOS
-cmake ${SDL_SRC:-SDL} -B build/macOS -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" -DCMAKE_OSX_DEPLOYMENT_TARGET=10.15 -DBUILD_SHARED_LIBS=OFF --log-level=ERROR
+cmake ${SDL_SRC:-SDL} -B build/macOS -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" -DCMAKE_OSX_DEPLOYMENT_TARGET=10.13 -DBUILD_SHARED_LIBS=OFF --log-level=ERROR
 echo Building for macOS
 cmake --build build/macOS -j
 echo Installing for macOS
