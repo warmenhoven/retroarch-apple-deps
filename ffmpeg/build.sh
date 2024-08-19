@@ -2,7 +2,7 @@
 
 root=$(realpath $(dirname $0))
 pushd ${FFMPEG_SRC:-ffmpeg}
-versionmin=10.15
+versionmin=10.13
 ARCHS="arm64 x86_64"
 for arch in ${ARCHS} ; do
     rm -f config.h
