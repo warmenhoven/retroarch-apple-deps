@@ -1,8 +1,8 @@
 COMMON_SDL_CFLAGS = -DHAVE_SDL2 -DHAVE_MICROPHONE -D_THREAD_SAFE
 
-HEADER_SEARCH_PATHS[sdk=macos*] = $(inherited) $(RETROARCH_APPLE_DEPS)/sdl/include $(RETROARCH_APPLE_DEPS)/sdl/macOS/include
-OTHER_CFLAGS[sdk=macos*] = $(inherited) $(COMMON_SDL_CFLAGS)
-OTHER_LDFLAGS[sdk=macos*] = $(inherited) $(RETROARCH_APPLE_DEPS)/sdl/macOS/lib/libSDL2.a -Wl,-framework,CoreVideo -Wl,-framework,Cocoa -Wl,-framework,IOKit -Wl,-framework,ForceFeedback -lobjc -Wl,-framework,Carbon -Wl,-framework,CoreAudio -Wl,-framework,AudioToolbox -Wl,-framework,AVFoundation -Wl,-framework,Foundation -Wl,-weak_framework,GameController -Wl,-weak_framework,Metal -Wl,-weak_framework,QuartzCore -Wl,-weak_framework,CoreHaptics -lm
+HEADER_SEARCH_PATHS[sdk=macosx*] = $(inherited) $(RETROARCH_APPLE_DEPS)/sdl/include $(RETROARCH_APPLE_DEPS)/sdl/macOS/include
+OTHER_CFLAGS[sdk=macosx*] = $(inherited) $(COMMON_SDL_CFLAGS)
+OTHER_LDFLAGS[sdk=macosx*] = $(inherited) $(RETROARCH_APPLE_DEPS)/sdl/macOS/lib/libSDL2.a -Wl,-framework,CoreVideo -Wl,-framework,Cocoa -Wl,-framework,IOKit -Wl,-framework,ForceFeedback -lobjc -Wl,-framework,Carbon -Wl,-framework,CoreAudio -Wl,-framework,AudioToolbox -Wl,-framework,AVFoundation -Wl,-framework,Foundation -Wl,-weak_framework,GameController -Wl,-weak_framework,Metal -Wl,-weak_framework,QuartzCore -Wl,-weak_framework,CoreHaptics -lm
 
 HEADER_SEARCH_PATHS[sdk=iphoneos*] = $(inherited) $(RETROARCH_APPLE_DEPS)/sdl/include $(RETROARCH_APPLE_DEPS)/sdl/iOS/include
 OTHER_CFLAGS[sdk=iphoneos*] = $(inherited) $(COMMON_SDL_CFLAGS)
