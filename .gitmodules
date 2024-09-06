@@ -1,0 +1,6 @@
+[submodule "sdl/SDL"]
+	path = sdl/SDL
+	url = https://github.com/libsdl-org/SDL.git
+[submodule "ffmpeg/ffmpeg"]
+	path = ffmpeg/ffmpeg
+	url = https://git.ffmpeg.org/ffmpeg.git
