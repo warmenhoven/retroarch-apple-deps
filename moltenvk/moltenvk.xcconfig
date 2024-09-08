@@ -1,0 +1,1 @@
+MOLTENVK_XCFRAMEWORK = $(RETROARCH_APPLE_DEPS)/moltenvk/MoltenVK.xcframework

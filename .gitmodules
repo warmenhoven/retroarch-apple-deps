@@ -4,3 +4,6 @@
 [submodule "ffmpeg/ffmpeg"]
 	path = ffmpeg/ffmpeg
 	url = https://git.ffmpeg.org/ffmpeg.git
+[submodule "moltenvk/MoltenVK"]
+	path = moltenvk/MoltenVK
+	url = https://github.com/warmenhoven/MoltenVK.git
