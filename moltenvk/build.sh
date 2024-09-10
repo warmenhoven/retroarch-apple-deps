@@ -31,6 +31,7 @@ done
 if [ -n "$BUILD_IOS12" ]; then
     # for iOS 12 we need an older version
     IOS12_VERSION="v1.2.7"
+    IOS12_GIT_REF="retroarch/v1.2.7"
     CURRENT_REV=$( cd MoltenVK ; git rev-parse HEAD )
     CURRENT_XCODE=$( xcode-select -p )
     # v1.2.7 only compiles with Xcode 15.2 or older (not sure how old)
@@ -38,7 +39,7 @@ if [ -n "$BUILD_IOS12" ]; then
     # actual build steps
     pushd MoltenVK
     make clean
-    git checkout $IOS12_VERSION
+    git checkout $IOS12_GIT_REF
     ./fetchDependencies --ios
     make ios
     popd
