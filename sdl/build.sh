@@ -18,7 +18,7 @@ mv build/macOS/include/SDL2/*.h include
 install macOS
 
 echo Configuring for iOS
-cmake ${SDL_SRC:-SDL} -B build/iOS -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_DEPLOYMENT_TARGET=13.0 -DBUILD_SHARED_LIBS=OFF
+cmake ${SDL_SRC:-SDL} -B build/iOS -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_DEPLOYMENT_TARGET=12.0 -DBUILD_SHARED_LIBS=OFF
 echo Building for iOS
 cmake --build build/iOS
 echo Installing for iOS
