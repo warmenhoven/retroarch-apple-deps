@@ -6,4 +6,4 @@
 	url = https://git.ffmpeg.org/ffmpeg.git
 [submodule "moltenvk/MoltenVK"]
 	path = moltenvk/MoltenVK
-	url = https://github.com/warmenhoven/MoltenVK.git
+	url = https://github.com/KhronosGroup/MoltenVK.git
