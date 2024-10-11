@@ -4,7 +4,7 @@ FETCH_ARGS="--all"
 MAKE_TARGET="all"
 PACKAGE_DIR="Release"
 
-BUILD_IOS12=
+BUILD_LEGACY=
 
 args=`getopt dl $*`
 set -- $args
@@ -18,7 +18,7 @@ while :; do
             shift
             ;;
         -l)
-            BUILD_IOS12=1
+            BUILD_LEGACY=1
             shift
             ;;
         --)
@@ -28,10 +28,10 @@ while :; do
     esac
 done
 
-if [ -n "$BUILD_IOS12" ]; then
-    # for iOS 12 we need an older version
-    IOS12_VERSION="v1.2.7"
-    IOS12_GIT_REF="retroarch/v1.2.7"
+if [ -n "$BUILD_LEGACY" ]; then
+    # for iOS 12 and macOS 10.13 we need an older version
+    LEGACY_VERSION="v1.2.7"
+    LEGACY_GIT_REF="retroarch/v1.2.7"
     CURRENT_REV=$( cd MoltenVK ; git rev-parse HEAD )
     CURRENT_XCODE=$( xcode-select -p )
     # v1.2.7 only compiles with Xcode 15.2 or older (not sure how old)
@@ -39,13 +39,15 @@ if [ -n "$BUILD_IOS12" ]; then
     # actual build steps
     pushd MoltenVK
     make clean
-    git checkout $IOS12_GIT_REF
-    ./fetchDependencies --ios
-    make ios
+    git checkout $LEGACY_GIT_REF
+    ./fetchDependencies --ios --macos
+    make ios macos
     popd
     # copy it where retroarch expects
-    cp MoltenVK/Package/Release/MoltenVK/dylib/iOS/libMoltenVK.dylib MoltenVK-${IOS12_VERSION}.xcframework/ios-arm64/MoltenVK-${IOS12_VERSION}.framework/MoltenVK-${IOS12_VERSION}
-    install_name_tool -id @rpath/MoltenVK-${IOS12_VERSION}.framework/MoltenVK-${IOS12_VERSION} MoltenVK-${IOS12_VERSION}.xcframework/ios-arm64/MoltenVK-${IOS12_VERSION}.framework/MoltenVK-${IOS12_VERSION}
+    cp MoltenVK/Package/Release/MoltenVK/dylib/iOS/libMoltenVK.dylib MoltenVK-${LEGACY_VERSION}.xcframework/ios-arm64/MoltenVK-${LEGACY_VERSION}.framework/MoltenVK-${LEGACY_VERSION}
+    install_name_tool -id @rpath/MoltenVK-${LEGACY_VERSION}.framework/MoltenVK-${LEGACY_VERSION} MoltenVK-${LEGACY_VERSION}.xcframework/ios-arm64/MoltenVK-${LEGACY_VERSION}.framework/MoltenVK-${LEGACY_VERSION}
+    cp MoltenVK/Package/Release/MoltenVK/dylib/macOS/libMoltenVK.dylib MoltenVK-${LEGACY_VERSION}.xcframework/macos-arm64_x86_64/MoltenVK-${LEGACY_VERSION}.framework/Versions/A/MoltenVK-${LEGACY_VERSION}
+    install_name_tool -id @rpath/MoltenVK-${LEGACY_VERSION}.framework/Versions/A/MoltenVK-${LEGACY_VERSION} MoltenVK-${LEGACY_VERSION}.xcframework/macos-arm64_x86_64/MoltenVK-${LEGACY_VERSION}.framework/Versions/A/MoltenVK-${LEGACY_VERSION}
     pushd MoltenVK
     git checkout "$CURRENT_REV"
     popd
