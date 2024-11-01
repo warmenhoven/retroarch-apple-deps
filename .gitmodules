@@ -7,3 +7,12 @@
 [submodule "moltenvk/MoltenVK"]
 	path = moltenvk/MoltenVK
 	url = https://github.com/KhronosGroup/MoltenVK.git
+[submodule "ffmpeg/x264"]
+	path = ffmpeg/x264
+	url = https://code.videolan.org/videolan/x264.git
+[submodule "ffmpeg/libvpx"]
+	path = ffmpeg/libvpx
+	url = https://github.com/warmenhoven/libvpx.git
+[submodule "ffmpeg/opus"]
+	path = ffmpeg/opus
+	url = https://gitlab.xiph.org/xiph/opus.git
