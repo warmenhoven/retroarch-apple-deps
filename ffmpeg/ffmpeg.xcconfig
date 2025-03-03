@@ -4,4 +4,4 @@ OTHER_CFLAGS = $(inherited) -DHAVE_FFMPEG -DHAVE_SWRESAMPLE
 
 OTHER_LDFLAGS = $(inherited) -L$(RETROARCH_APPLE_DEPS)/ffmpeg/build/$(PLATFORM_NAME)/$(CURRENT_ARCH)/lib
 
-OTHER_LDFLAGS = $(inherited) -lavcodec -lavformat -lavutil -lswresample -lswscale -lopus -lvpx -lx264 -lbz2 -liconv -framework AudioToolbox -framework VideoToolbox -framework Security -framework CoreMedia
+OTHER_LDFLAGS = $(inherited) -lavcodec -lavdevice -lavformat -lavutil -lswresample -lswscale -lopus -lvpx -lx264 -lbz2 -liconv -framework AudioToolbox -framework VideoToolbox -framework Security -framework CoreMedia
