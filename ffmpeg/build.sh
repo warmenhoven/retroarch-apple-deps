@@ -155,6 +155,7 @@ function build_ffmpeg() {
         --disable-avfilter \
         --disable-metal \
         --disable-audiotoolbox \
+        --disable-libxcb \
         --enable-libx264 \
         --enable-encoder=libx264 \
         --enable-encoder=libx264rgb \
