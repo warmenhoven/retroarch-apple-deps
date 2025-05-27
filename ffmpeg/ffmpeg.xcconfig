@@ -1,7 +1,24 @@
-HEADER_SEARCH_PATHS = $(inherited) $(RETROARCH_APPLE_DEPS)/ffmpeg/build/$(PLATFORM_NAME)/$(CURRENT_ARCH)/include
+FFMPEG_BASE      = $(RETROARCH_APPLE_DEPS)/ffmpeg/build/$(PLATFORM_NAME)/$(CURRENT_ARCH)
+FFMPEG_INC       = $(FFMPEG_BASE)/include
+FFMPEG_LIB       = $(FFMPEG_BASE)/lib
+FFMPEG_CFLAGS    = -DHAVE_FFMPEG -DHAVE_SWRESAMPLE
+FFMPEG_LIBFLAGS  = \
+  -lavcodec -lavdevice -lavformat -lavutil \
+  -lswresample -lswscale -lopus -lvpx -lx264 \
+  -lbz2 -liconv \
+  -framework AudioToolbox \
+  -framework VideoToolbox \
+  -framework Security \
+  -framework CoreMedia
 
-OTHER_CFLAGS = $(inherited) -DHAVE_FFMPEG -DHAVE_SWRESAMPLE
+HEADER_SEARCH_PATHS[sdk=macosx*]    = $(inherited) $(FFMPEG_INC)
+HEADER_SEARCH_PATHS[sdk=iphoneos*]  = $(inherited) $(FFMPEG_INC)
+HEADER_SEARCH_PATHS[sdk=appletvos*] = $(inherited) $(FFMPEG_INC)
 
-OTHER_LDFLAGS = $(inherited) -L$(RETROARCH_APPLE_DEPS)/ffmpeg/build/$(PLATFORM_NAME)/$(CURRENT_ARCH)/lib
+OTHER_CFLAGS[sdk=macosx*]    = $(inherited) $(FFMPEG_CFLAGS)
+OTHER_CFLAGS[sdk=iphoneos*]  = $(inherited) $(FFMPEG_CFLAGS)
+OTHER_CFLAGS[sdk=appletvos*] = $(inherited) $(FFMPEG_CFLAGS)
 
-OTHER_LDFLAGS = $(inherited) -lavcodec -lavdevice -lavformat -lavutil -lswresample -lswscale -lopus -lvpx -lx264 -lbz2 -liconv -framework AudioToolbox -framework VideoToolbox -framework Security -framework CoreMedia
+OTHER_LDFLAGS[sdk=macosx*]    = $(inherited) -L$(FFMPEG_LIB) $(FFMPEG_LIBFLAGS)
+OTHER_LDFLAGS[sdk=iphoneos*]  = $(inherited) -L$(FFMPEG_LIB) $(FFMPEG_LIBFLAGS)
+OTHER_LDFLAGS[sdk=appletvos*] = $(inherited) -L$(FFMPEG_LIB) $(FFMPEG_LIBFLAGS)
