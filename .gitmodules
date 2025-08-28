@@ -16,3 +16,6 @@
 [submodule "ffmpeg/opus"]
 	path = ffmpeg/opus
 	url = https://gitlab.xiph.org/xiph/opus.git
+[submodule "mbedtls/mbedtls"]
+	path = mbedtls/mbedtls
+	url = https://github.com/Mbed-TLS/mbedtls.git

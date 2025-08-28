@@ -1,0 +1,7 @@
+// Override RetroArch's default to use system mbedtls instead of builtin
+// Set MBEDTLS_BUILTIN_FLAG to empty to disable -DHAVE_BUILTINMBEDTLS
+MBEDTLS_BUILTIN_FLAG =
+
+HEADER_SEARCH_PATHS = $(inherited) $(RETROARCH_APPLE_DEPS)/mbedtls/include
+
+OTHER_LDFLAGS = $(inherited) -L$(RETROARCH_APPLE_DEPS)/mbedtls/$(PLATFORM_NAME)/lib -lmbedtls -lmbedx509 -lmbedcrypto
