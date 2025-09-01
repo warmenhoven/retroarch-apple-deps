@@ -19,3 +19,6 @@
 [submodule "mbedtls/mbedtls"]
 	path = mbedtls/mbedtls
 	url = https://github.com/Mbed-TLS/mbedtls.git
+[submodule "kscrash/KSCrash"]
+	path = kscrash/KSCrash
+	url = https://github.com/kstenerud/KSCrash.git

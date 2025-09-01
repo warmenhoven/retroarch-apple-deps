@@ -1,0 +1,26 @@
+KSCRASH_BASE     = $(RETROARCH_APPLE_DEPS)/kscrash
+KSCRASH_INC      = $(KSCRASH_BASE)/include
+KSCRASH_CFLAGS   = -DHAVE_KSCRASH
+KSCRASH_LIBDIR   = $(KSCRASH_BASE)/$(PLATFORM_NAME)/lib
+
+// Note: Order matters due to dependencies between libraries
+// Core libraries (required)
+KSCRASH_CORE_LIBS = -lKSCrashCore -lKSCrashRecordingCore -lKSCrashRecording
+// Reporting libraries (optional but recommended)
+KSCRASH_REPORTING_LIBS = -lKSCrashReportingCore -lKSCrashFilters -lKSCrashSinks -lKSCrashInstallations
+// Optional modules
+KSCRASH_OPTIONAL_LIBS = -lKSCrashDemangleFilter -lKSCrashBootTimeMonitor -lKSCrashDiscSpaceMonitor
+// All KSCrash libraries in dependency order
+KSCRASH_LIBS = $(KSCRASH_OPTIONAL_LIBS) $(KSCRASH_REPORTING_LIBS) $(KSCRASH_CORE_LIBS) -lz
+
+HEADER_SEARCH_PATHS[sdk=macosx*]    = $(inherited) $(KSCRASH_INC)
+HEADER_SEARCH_PATHS[sdk=iphoneos*]  = $(inherited) $(KSCRASH_INC)
+HEADER_SEARCH_PATHS[sdk=appletvos*] = $(inherited) $(KSCRASH_INC)
+
+OTHER_CFLAGS[sdk=macosx*]    = $(inherited) $(KSCRASH_CFLAGS)
+OTHER_CFLAGS[sdk=iphoneos*]  = $(inherited) $(KSCRASH_CFLAGS)
+OTHER_CFLAGS[sdk=appletvos*] = $(inherited) $(KSCRASH_CFLAGS)
+
+OTHER_LDFLAGS[sdk=macosx*]    = $(inherited) -L$(KSCRASH_LIBDIR) $(KSCRASH_LIBS)
+OTHER_LDFLAGS[sdk=iphoneos*]  = $(inherited) -L$(KSCRASH_LIBDIR) $(KSCRASH_LIBS)
+OTHER_LDFLAGS[sdk=appletvos*] = $(inherited) -L$(KSCRASH_LIBDIR) $(KSCRASH_LIBS)

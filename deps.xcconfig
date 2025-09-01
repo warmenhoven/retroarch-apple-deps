@@ -1,6 +1,7 @@
 RETROARCH_APPLE_DEPS = $(inherited:default=/usr/local/share/retroarch-apple-deps)
 
 #include "ffmpeg/ffmpeg.xcconfig"
+#include "kscrash/kscrash.xcconfig"
 #include "mbedtls/mbedtls.xcconfig"
 #include "moltenvk/moltenvk.xcconfig"
 #include "sdl/sdl.xcconfig"
