@@ -48,6 +48,11 @@ if [ -n "$BUILD_LEGACY" ]; then
     install_name_tool -id @rpath/MoltenVK-${LEGACY_VERSION}.framework/MoltenVK-${LEGACY_VERSION} MoltenVK-${LEGACY_VERSION}.xcframework/ios-arm64/MoltenVK-${LEGACY_VERSION}.framework/MoltenVK-${LEGACY_VERSION}
     cp MoltenVK/Package/Release/MoltenVK/dylib/macOS/libMoltenVK.dylib MoltenVK-${LEGACY_VERSION}.xcframework/macos-arm64_x86_64/MoltenVK-${LEGACY_VERSION}.framework/Versions/A/MoltenVK-${LEGACY_VERSION}
     install_name_tool -id @rpath/MoltenVK-${LEGACY_VERSION}.framework/Versions/A/MoltenVK-${LEGACY_VERSION} MoltenVK-${LEGACY_VERSION}.xcframework/macos-arm64_x86_64/MoltenVK-${LEGACY_VERSION}.framework/Versions/A/MoltenVK-${LEGACY_VERSION}
+    # Create ICD json for Vulkan loader (macOS only)
+    mkdir -p MoltenVK-${LEGACY_VERSION}.xcframework/macos-arm64_x86_64/MoltenVK-${LEGACY_VERSION}.framework/Versions/A/Resources
+    sed "s|./libMoltenVK.dylib|../MoltenVK-${LEGACY_VERSION}|" \
+        MoltenVK/MoltenVK/icd/MoltenVK_icd.json \
+        > MoltenVK-${LEGACY_VERSION}.xcframework/macos-arm64_x86_64/MoltenVK-${LEGACY_VERSION}.framework/Versions/A/Resources/MoltenVK_icd.json
     pushd MoltenVK
     git checkout "$CURRENT_REV"
     popd
@@ -61,3 +66,9 @@ make $MAKE_TARGET
 popd
 
 cp -aRp MoltenVK/Package/$PACKAGE_DIR/MoltenVK/dynamic/MoltenVK.xcframework .
+
+# Create ICD json for Vulkan loader (macOS only)
+mkdir -p MoltenVK.xcframework/macos-arm64_x86_64/MoltenVK.framework/Versions/A/Resources
+sed 's|./libMoltenVK.dylib|../MoltenVK|' \
+    MoltenVK/MoltenVK/icd/MoltenVK_icd.json \
+    > MoltenVK.xcframework/macos-arm64_x86_64/MoltenVK.framework/Versions/A/Resources/MoltenVK_icd.json
