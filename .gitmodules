@@ -22,3 +22,6 @@
 [submodule "kscrash/KSCrash"]
 	path = kscrash/KSCrash
 	url = https://github.com/kstenerud/KSCrash.git
+[submodule "libsmb2/libsmb2"]
+	path = libsmb2/libsmb2
+	url = https://github.com/sahlberg/libsmb2.git

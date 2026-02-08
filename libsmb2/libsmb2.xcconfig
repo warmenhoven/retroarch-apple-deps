@@ -1,0 +1,5 @@
+HEADER_SEARCH_PATHS = $(inherited) $(RETROARCH_APPLE_DEPS)/libsmb2/include
+
+OTHER_CFLAGS = $(inherited) -DHAVE_SMBCLIENT
+
+OTHER_LDFLAGS = $(inherited) -L$(RETROARCH_APPLE_DEPS)/libsmb2/$(PLATFORM_NAME)/lib -lsmb2
