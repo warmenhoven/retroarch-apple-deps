@@ -5,4 +5,5 @@ RETROARCH_APPLE_DEPS = $(inherited:default=/usr/local/share/retroarch-apple-deps
 #include "libsmb2/libsmb2.xcconfig"
 #include "mbedtls/mbedtls.xcconfig"
 #include "moltenvk/moltenvk.xcconfig"
+#include "glslang/glslang.xcconfig"
 #include "sdl/sdl.xcconfig"

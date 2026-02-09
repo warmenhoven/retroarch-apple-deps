@@ -25,3 +25,6 @@
 [submodule "libsmb2/libsmb2"]
 	path = libsmb2/libsmb2
 	url = https://github.com/sahlberg/libsmb2.git
+[submodule "glslang/glslang"]
+	path = glslang/glslang
+	url = https://github.com/KhronosGroup/glslang.git
