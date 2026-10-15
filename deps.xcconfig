@@ -1,4 +1,5 @@
 RETROARCH_APPLE_DEPS = $(inherited:default=/usr/local/share/retroarch-apple-deps)
+RETROARCH_APPLE_SDL = $(inherited:default=YES)
 
 #include "ffmpeg/ffmpeg.xcconfig"
 #include "kscrash/kscrash.xcconfig"
